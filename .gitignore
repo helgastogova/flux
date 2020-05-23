@@ -1,0 +1,6 @@
+/frontend/node_modules/
+/backend/backend/__pycache__
+/backend/backend/storage/__pycache__
+/backend/worker/
+server.js
+dist
