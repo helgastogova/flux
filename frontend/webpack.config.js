@@ -1,4 +1,5 @@
 const path = require("path");
+const nodeExternals = require("webpack-node-externals");
 
 clientConfig = {
   mode: "development",
@@ -10,15 +11,14 @@ clientConfig = {
     filename: "[name].js"
   },
   module: {
-    rules: [
-        { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }
-    ]
- }
+    rules: [{ test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }]
+  }
 };
 
 serverConfig = {
   mode: "development",
   target: "node",
+  externals: [nodeExternals()],
   entry: {
     server: ["./index.js", "@babel/polyfill"]
   },
@@ -27,10 +27,8 @@ serverConfig = {
     filename: "[name].js"
   },
   module: {
-    rules: [
-        { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }
-    ]
- }
+    rules: [{ test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }]
+  }
 };
 
 module.exports = [clientConfig, serverConfig];
